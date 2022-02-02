@@ -1,7 +1,9 @@
 
 from django.urls import path
-from .views import index
+from .views import Home, PostsByCategory, get_post
 
 urlpatterns = [
-    path('', index, name='home'),
+    path('', Home.as_view(), name='home'),
+    path('category/<str:slug>/', PostsByCategory.as_view(), name='category'),
+    path('post/<str:slug>/', get_post, name='post'),
 ]
